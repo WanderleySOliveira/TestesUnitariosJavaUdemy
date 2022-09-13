@@ -3,6 +3,8 @@ package br.ce.wcaquino.servicos;
 import br.ce.wcaquino.entidades.Filme;
 import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
+import br.ce.wcaquino.exceptions.FilmesSemEstoqueException;
+import br.ce.wcaquino.exceptions.LocadoraException;
 import br.ce.wcaquino.utils.DataUtils;
 import org.junit.Assert;
 import org.junit.Rule;
@@ -59,7 +61,7 @@ public class LocacaoServiceTest {
     }
 
     //No metodo abaixo eu indico para o teste que ele deve estourar uma exception, criando o cenario de falha para ter esse retorno.
-    @Test(expected = Exception.class)
+    @Test(expected = FilmesSemEstoqueException.class)
     public void deveLancarExceptionFilmeSemEstoqueFormaElegante() throws Exception {
         //cenario
         LocacaoService service = new LocacaoService();
@@ -70,6 +72,8 @@ public class LocacaoServiceTest {
         service.alugarFilme(usuario, filme);
     }
 
+
+    //As formas seguintes deixam de ser necessarias, quando deixamos de utilizar uma Exception generica e utilizamos uma que será lançada somente em um caso especifico
     @Test
     public void deveLancarExceptionFilmeSemEstoqueFormaRobusta() {
         //cenario
@@ -101,5 +105,29 @@ public class LocacaoServiceTest {
         service.alugarFilme(usuario, filme);
     }
 
+    @Test
+    public void testaLocacaoUsuarioVazio() throws Exception {
 
+        //cenario
+        LocacaoService service = new LocacaoService();
+        Filme filme = new Filme("Filme 2", 1, 4.0);
+
+        try {
+            service.alugarFilme(null, filme);
+            Assert.fail();
+        } catch (LocadoraException e) {
+            assertThat(e.getMessage(), is("Usuario Vazio"));
+        }
+    }
+
+    @Test
+    public void testaFilmeVazio() throws LocadoraException, FilmesSemEstoqueException {
+        LocacaoService service = new LocacaoService();
+        Usuario usuario = new Usuario("Wanderley");
+
+        exception.expect(LocadoraException.class);
+        exception.expectMessage("Filme Vazio");
+
+        service.alugarFilme(usuario, null);
+    }
 }
