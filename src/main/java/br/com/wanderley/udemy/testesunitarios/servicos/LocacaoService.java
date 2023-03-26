@@ -8,19 +8,21 @@ import br.com.wanderley.udemy.testesunitarios.entidades.Filme;
 import br.com.wanderley.udemy.testesunitarios.entidades.Locacao;
 import br.com.wanderley.udemy.testesunitarios.exceptions.FilmeSemEstoqueException;
 import br.com.wanderley.udemy.testesunitarios.exceptions.LocadoraException;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class LocacaoService {
 
-    public Locacao alugarFilme(Usuario usuario, Filme filme) throws FilmeSemEstoqueException, LocadoraException {
-        if (usuario == null) {
-            throw new LocadoraException("Usuario Vazio");
-        }
-        if (filme == null) {
-            throw new LocadoraException("Filme Vazio");
-        }
-        if (filme.getEstoque() == 0) {
-            throw new FilmeSemEstoqueException();
-        }
+    public Locacao alugarFilme(Usuario usuario, Filme filme) {
+//        if (usuario == null) {
+//            throw new LocadoraException("Usuario Vazio");
+//        }
+//        if (filme == null) {
+//            throw new LocadoraException("Filme Vazio");
+//        }
+//        if (filme.getEstoque() == 0) {
+//            throw new FilmeSemEstoqueException();
+//        }
 
         Locacao locacao = new Locacao();
         locacao.setFilme(filme);
@@ -38,4 +40,6 @@ public class LocacaoService {
 
         return locacao;
     }
+
+
 }
