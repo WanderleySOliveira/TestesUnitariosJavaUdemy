@@ -1,14 +1,13 @@
-package br.ce.wcaquino.servicos;
-
-import static br.ce.wcaquino.utils.DataUtils.adicionarDias;
+package br.com.wanderley.udemy.testesunitarios.servicos;
 
 import java.util.Date;
 
-import br.ce.wcaquino.entidades.Filme;
-import br.ce.wcaquino.entidades.Locacao;
-import br.ce.wcaquino.entidades.Usuario;
-import br.ce.wcaquino.exceptions.FilmeSemEstoqueException;
-import br.ce.wcaquino.exceptions.LocadoraException;
+import br.com.wanderley.udemy.testesunitarios.entidades.Usuario;
+import br.com.wanderley.udemy.testesunitarios.utils.DataUtils;
+import br.com.wanderley.udemy.testesunitarios.entidades.Filme;
+import br.com.wanderley.udemy.testesunitarios.entidades.Locacao;
+import br.com.wanderley.udemy.testesunitarios.exceptions.FilmeSemEstoqueException;
+import br.com.wanderley.udemy.testesunitarios.exceptions.LocadoraException;
 
 public class LocacaoService {
 
@@ -31,7 +30,7 @@ public class LocacaoService {
 
         //Entrega no dia seguinte
         Date dataEntrega = new Date();
-        dataEntrega = adicionarDias(dataEntrega, 1);
+        dataEntrega = DataUtils.adicionarDias(dataEntrega, 1);
         locacao.setDataRetorno(dataEntrega);
 
         //Salvando a locacao...

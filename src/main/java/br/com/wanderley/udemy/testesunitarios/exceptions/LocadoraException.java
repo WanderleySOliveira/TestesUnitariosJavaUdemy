@@ -1,4 +1,4 @@
-package br.ce.wcaquino.exceptions;
+package br.com.wanderley.udemy.testesunitarios.exceptions;
 
 public class LocadoraException extends Exception {
     public LocadoraException(String message) {

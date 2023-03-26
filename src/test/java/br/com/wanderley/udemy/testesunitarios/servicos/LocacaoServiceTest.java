@@ -1,11 +1,11 @@
-package br.ce.wcaquino.servicos;
+package br.com.wanderley.udemy.testesunitarios.servicos;
 
-import br.ce.wcaquino.entidades.Filme;
-import br.ce.wcaquino.entidades.Locacao;
-import br.ce.wcaquino.entidades.Usuario;
-import br.ce.wcaquino.exceptions.FilmeSemEstoqueException;
-import br.ce.wcaquino.exceptions.LocadoraException;
-import br.ce.wcaquino.utils.DataUtils;
+import br.com.wanderley.udemy.testesunitarios.entidades.Usuario;
+import br.com.wanderley.udemy.testesunitarios.utils.DataUtils;
+import br.com.wanderley.udemy.testesunitarios.entidades.Filme;
+import br.com.wanderley.udemy.testesunitarios.entidades.Locacao;
+import br.com.wanderley.udemy.testesunitarios.exceptions.FilmeSemEstoqueException;
+import br.com.wanderley.udemy.testesunitarios.exceptions.LocadoraException;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;

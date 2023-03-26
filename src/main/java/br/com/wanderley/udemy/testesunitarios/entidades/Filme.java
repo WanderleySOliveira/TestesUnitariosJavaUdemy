@@ -1,4 +1,4 @@
-package br.ce.wcaquino.entidades;
+package br.com.wanderley.udemy.testesunitarios.entidades;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
